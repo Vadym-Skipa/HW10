@@ -131,7 +131,7 @@ class VacuumCleaner:
         except IncorrectGarbageBinOccupancy:
             self.garbage_bin_occupancy = self.max_garbage_bin_occupancy
             raise NoPlaceForGarbage("Cleaning is not finished")
-        if self.garbage_bin_occupancy == 0:
+        if self.garbage_bin_occupancy == self.max_garbage_bin_occupancy:
             raise NoPlaceForGarbage("Cleaning is finished")
 
     def battery_using_in_cleaning(self):
@@ -194,5 +194,5 @@ class VacuumCleaner:
             sleep(1)
 
 
-v = VacuumCleaner(40, 5, 20)
-v.move()
+# v = VacuumCleaner(40, 5, 20)
+# v.move()
